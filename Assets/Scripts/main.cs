@@ -9,7 +9,7 @@ public class main : MonoBehaviour
     
     void Start()
     {
-        Debug.Log("hello world");
+        Debug.Log("---------快开始欢乐地打飞机吧！---------");
     }
 
     
