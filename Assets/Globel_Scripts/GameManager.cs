@@ -4,6 +4,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }  // 单例模式
     public Vector3 PlayerPosition { get; private set; }  // 存储玩家位置
+    public int EnemyNumvber { get; private set; }
+
+    private void Start()
+    {
+        // 设置全局重力为 (0, 0, 0)
+        Physics.gravity = Vector3.zero;
+    }
+
 
     void Awake()
     {
@@ -24,5 +32,10 @@ public class GameManager : MonoBehaviour
     public void UpdatePlayerPosition(Vector3 newPosition)
     {
         PlayerPosition = newPosition;  // 更新玩家位置
+    }
+
+    public void UpdateEnemyNumber(int newNumber)
+    {
+        EnemyNumvber = newNumber;  // 更新玩家位置
     }
 }

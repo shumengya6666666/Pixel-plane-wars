@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\main.cs" />
+    <Compile Include="Assets\Scripts\Enemy_Generated.cs" />
     <Compile Include="Assets\Globel_Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Button.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />

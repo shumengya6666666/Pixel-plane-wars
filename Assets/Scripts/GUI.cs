@@ -6,11 +6,13 @@ using UnityEngine;
 public class GUI : MonoBehaviour
 {
     private TextMeshProUGUI Player_Pos;  // 存储 TextMeshProUGUI 组件
+    private TextMeshProUGUI Enemy_Num;
 
     void Start()
     {
         // 使用 GetComponent 获取 TextMeshProUGUI 组件
         Player_Pos = GameObject.Find("Player_Pos")?.GetComponent<TextMeshProUGUI>();
+        Enemy_Num = GameObject.Find("Enemy_Num")?.GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
@@ -26,6 +28,11 @@ public class GUI : MonoBehaviour
                 Player_Pos.text = "玩家坐标: (" + Mathf.RoundToInt(playerPosition.x) + "," + Mathf.RoundToInt(playerPosition.y) + ")";
                 //Player_Pos.text = "玩家坐标: (" + playerPosition.x.ToString("F0") + "," + playerPosition.y.ToString("F0") + ")";
 
+            }
+
+            if (Enemy_Num != null)
+            {
+                Enemy_Num.text = "敌人数量: "+ GameManager.Instance.EnemyNumvber;
             }
         }
     }
