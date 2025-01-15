@@ -17,11 +17,16 @@ public class PlayerMovement : MonoBehaviour
     public float shootInterval = 1f; // 每秒射击一次
     private float lastShootTime = 0f; // 上次射击的时间
 
+    public int health = 100;
+    public int level = 0;
+    public int experience = 0;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.interpolation = RigidbodyInterpolation2D.Interpolate; // 使用插值
         cameraTransform = Camera.main.transform;
+        GameManager.Instance.UpdatePlayerHealth(health);
     }
 
     void Update()
@@ -39,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        isKill(health);
+
         Vector2 forwardMovement = transform.up * forwardSpeed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + forwardMovement);
 
@@ -92,17 +99,49 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("与碰撞体相撞： " + collision.gameObject.name); // 添加调试信息
-        if (collision.gameObject.CompareTag("AirWall"))
+
+        // 检测是否与敌人飞机碰撞
+        if (collision.gameObject.CompareTag("EnemyPlane"))
+        {
+            // 玩家掉血，可以根据需要调整扣血的数值
+            health -= 10;
+            GameManager.Instance.UpdatePlayerHealth(health);
+            Debug.Log("玩家受伤，剩余生命: " + health);
+
+
+        }
+        else if (collision.gameObject.CompareTag("AirWall"))
         {
             Debug.Log("你死了!,原因：撞到了空气墙"); // 确认与空气墙碰撞
             EndGame();
         }
+        else if (collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            health -= 5;
+            Debug.Log("撞到子弹："+ collision.gameObject);
+            GameManager.Instance.UpdatePlayerHealth(health);
+            Destroy(collision.gameObject); // 销毁子弹
+        }
     }
+
 
     void EndGame()
     {
         // 游戏结束的处理逻辑
         Debug.Log("-----------游戏结束-----------");
-        // 可以添加其他游戏结束的处理，例如显示游戏结束界面、暂停游戏等。
+
+        // 停止游戏的进行
+        Time.timeScale = 0;  // 暂停游戏
     }
+
+    void isKill(int health)
+    {
+        // 如果血量为0，游戏结束
+        if (health <= 0)
+        {
+            Debug.Log("----------玩家死亡----------");
+            EndGame();
+        }
+    }
+
 }

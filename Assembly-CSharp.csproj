@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Enemy_plane.cs" />
     <Compile Include="Assets\Scripts\GUI.cs" />
     <Compile Include="Assets\Scripts\Player_Generated_Pos.cs" />
+    <Compile Include="Assets\Scripts\Enemy_Bullet.cs" />
     <Compile Include="Assets\Scripts\Hello.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
   </ItemGroup>

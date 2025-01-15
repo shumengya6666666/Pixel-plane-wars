@@ -99,12 +99,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f3c5cb5fd5d324a8e3c656866eebaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 10
+  forwardSpeed: 5
   rotationSpeed: 100
   firePoint: {fileID: 6314837561974649730}
   bulletSpeed: 30
   bulletPrefab: {fileID: 5014304646218956809, guid: a3ad15ffcc221d14fb34467cbed2033c, type: 3}
   shootInterval: 0.4
+  health: 100
+  level: 0
+  experience: 0
 --- !u!50 &4707592517326923873
 Rigidbody2D:
   serializedVersion: 4

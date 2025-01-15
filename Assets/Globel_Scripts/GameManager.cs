@@ -5,6 +5,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }  // 单例模式
     public Vector3 PlayerPosition { get; private set; }  // 存储玩家位置
     public int EnemyNumvber { get; private set; }
+    public int PlayerHealth { get; private set; }
+    public int PlayerExperience { get; private set; }
+    public int PlayerLevel { get; private set; }
 
     private void Start()
     {
@@ -37,5 +40,20 @@ public class GameManager : MonoBehaviour
     public void UpdateEnemyNumber(int newNumber)
     {
         EnemyNumvber = newNumber;  // 更新玩家位置
+    }
+
+    public void UpdatePlayerHealth(int newHealth)
+    {
+        PlayerHealth = newHealth;  // 更新玩家位置
+    }
+
+    public void UpdatePlayerExperience(int newExperience)
+    {
+        PlayerExperience = newExperience;  // 更新玩家位置
+    }
+
+    public void UpdatePlayerLevel(int newPlayerLevel)
+    {
+        PlayerLevel = newPlayerLevel;  // 更新玩家位置
     }
 }

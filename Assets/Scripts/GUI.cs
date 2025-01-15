@@ -7,12 +7,14 @@ public class GUI : MonoBehaviour
 {
     private TextMeshProUGUI Player_Pos;  // 存储 TextMeshProUGUI 组件
     private TextMeshProUGUI Enemy_Num;
+    private TextMeshProUGUI Player_Health;
 
     void Start()
     {
         // 使用 GetComponent 获取 TextMeshProUGUI 组件
         Player_Pos = GameObject.Find("Player_Pos")?.GetComponent<TextMeshProUGUI>();
         Enemy_Num = GameObject.Find("Enemy_Num")?.GetComponent<TextMeshProUGUI>();
+        Player_Health = GameObject.Find("Health")?.GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
@@ -33,6 +35,11 @@ public class GUI : MonoBehaviour
             if (Enemy_Num != null)
             {
                 Enemy_Num.text = "敌人数量: "+ GameManager.Instance.EnemyNumvber;
+            }
+
+            if (Player_Health != null)
+            {
+                Player_Health.text = "生命值: " + GameManager.Instance.PlayerHealth;
             }
         }
     }

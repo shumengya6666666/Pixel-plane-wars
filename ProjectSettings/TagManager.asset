@@ -6,6 +6,9 @@ TagManager:
   tags:
   - AirWall
   - PlayerPlane
+  - EnemyPlane
+  - PlayerBullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
