@@ -3,18 +3,19 @@ using UnityEngine;
 public class EnemyPlane : MonoBehaviour
 {
     // 外部变量 可配置的参数
-    public bool isCanSuicide = true;//是否敌人消失
-    public int SuicideTime = 20;//敌人消失的时间
+    public bool isCanSuicide = true; // 是否敌人消失
+    public int SuicideTime = 20; // 敌人消失的时间
     public float speed = 9f; // 移动速度
     public float rotationSpeed = 200f; // 提高旋转速度使追踪更敏捷
     public GameObject bulletPrefab; // 子弹预制体
     public float bulletSpeed = 10f; // 子弹速度
     public float fireRate = 1f; // 发射子弹的间隔时间
-    public float attackRange = 10f;//敌人的攻击范围，达到此距离才可以发射子弹
-    public int Generated_Money = 10;//敌人掉落的金币数
-    public int Generated_Experience = 5;//敌人掉落的经验值
+    public float attackRange = 10f; // 敌人的攻击范围，达到此距离才可以发射子弹
+    public int Generated_Money = 10; // 敌人掉落的金币数
+    public int Generated_Experience = 5; // 敌人掉落的经验值
+    public float Generation_Probability = 0.5f; // 敌人的生成概率
 
-    //内部变量
+    // 内部变量
     private Transform player; // 玩家对象的引用
     private float nextFireTime = 0f; // 下一次发射时间
 
@@ -30,6 +31,12 @@ public class EnemyPlane : MonoBehaviour
         if (isCanSuicide)
         {
             Destroy(gameObject, SuicideTime); // 设定在指定时间后销毁敌人飞机
+        }
+
+        // 通过概率来决定是否生成敌人
+        if (Random.value > Generation_Probability)
+        {
+            Destroy(gameObject); // 如果不符合生成条件，销毁敌人
         }
     }
 
@@ -73,8 +80,6 @@ public class EnemyPlane : MonoBehaviour
         }
     }
 
-
-
     // 发射子弹的方法
     void FireBullet()
     {
@@ -94,23 +99,22 @@ public class EnemyPlane : MonoBehaviour
     // 撞到物体时的处理
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("AirWall"))//与空气墙碰撞
+        if (collision.gameObject.CompareTag("AirWall")) // 与空气墙碰撞
         {
             Debug.Log("敌人飞机撞到墙了！");
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("PlayerPlane"))//与玩家飞机碰撞
+        else if (collision.gameObject.CompareTag("PlayerPlane")) // 与玩家飞机碰撞
         {
             Debug.Log("敌人飞机与玩家碰撞！");
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("PlayerBullet"))//与玩家子弹碰撞
+        else if (collision.gameObject.CompareTag("PlayerBullet")) // 与玩家子弹碰撞
         {
             Destroy(gameObject);
             Destroy(collision.gameObject); // 销毁子弹
-            GameManager.Instance.AddMoney(Generated_Money); 
+            GameManager.Instance.AddMoney(Generated_Money);
             GameManager.Instance.AddPlayerExperience(Generated_Experience);
         }
-
     }
 }

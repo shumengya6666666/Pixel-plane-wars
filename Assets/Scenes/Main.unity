@@ -1489,6 +1489,14 @@ PrefabInstance:
       propertyPath: m_fontStyle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9135190061748712322, guid: 56a7c329cad312c4199116e084d52e6b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 238
+      objectReference: {fileID: 0}
+    - target: {fileID: 9135190061748712322, guid: 56a7c329cad312c4199116e084d52e6b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 143
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1271712500471115999, guid: 56a7c329cad312c4199116e084d52e6b, type: 3}
     m_RemovedGameObjects: []
@@ -1667,7 +1675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4536264235574284949, guid: ba728bd506e59c34ca2fb7c03b2c9980, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6843172868408417264, guid: ba728bd506e59c34ca2fb7c03b2c9980, type: 3}
       propertyPath: m_AnchoredPosition.y

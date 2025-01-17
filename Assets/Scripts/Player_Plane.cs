@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //共有变量，玩家配置
     public float forwardSpeed = 10f; // 向前移动速度
     public float rotationSpeed = 100f; // 旋转速度
-    public Transform firePoint; // 发射点
+    public Transform firePoint; // 发射子弹的位置
     public float bulletSpeed = 10f; // 子弹速度
-    //在玩家的父节点里面添加子弹预制体
-    public GameObject bulletPrefab; // 子弹预制体
-    //获取玩家相应的组件
-    private Rigidbody2D rb;
-    private Transform cameraTransform;
-
+    public GameObject bulletPrefab; // 子弹预制体 //在玩家的父节点里面添加子弹预制体
     public float shootInterval = 1f; // 每秒射击一次
-    private float lastShootTime = 0f; // 上次射击的时间
-
     public int health = 100;
     public int level = 0;
     public int experience = 0;
     public int money = 0;
+
+    //私有变量
+    //获取玩家相应的组件
+    private Rigidbody2D rb;
+    private Transform cameraTransform;
+    private float lastShootTime = 0f; // 上次射击的时间
 
     void Start()
     {
@@ -103,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
         //ShootShotgun(3);
         //ShootRadial(27);
 
-        ShootHorizontal();
+        ShootHorizontal(5);
     }
 
 
@@ -172,19 +172,36 @@ public class PlayerMovement : MonoBehaviour
 
 
     // 水平射击（发射多个平行子弹）
-    private void ShootHorizontal()
+    private void ShootHorizontal(int bulletCount)
     {
         Vector2 direction = transform.up; // 玩家前进的方向
 
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        //GameObject bullet2 = Instantiate(bulletPrefab, firePoint.position+(3,0), Quaternion.identity);
-        GameObject bullet3 = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-        bulletRb.velocity = direction * bulletSpeed;
+        // 偏移量
+        float spreadAngle = 0.5f; // 子弹之间的偏移量，单位是世界坐标
 
-        // 保持子弹与玩家的前进方向一致
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        // 计算偏移方向
+        Vector2 offset = new Vector2(-direction.y, direction.x) * spreadAngle; // 获取方向的垂直向量并进行偏移
+
+        // 创建并设置每个子弹
+        for (int i = 0; i < bulletCount; i++)
+        {
+            // 创建子弹
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+
+            // 设置子弹的速度
+            bulletRb.velocity = direction * bulletSpeed;
+
+            // 计算偏移位置，左右偏移
+            Vector2 bulletOffset = (i - (bulletCount - 1) / 2f) * offset; // 根据子弹数量动态计算偏移
+
+            // 修改子弹的位置
+            bullet.transform.position = (Vector2)firePoint.position + bulletOffset;
+
+            // 子弹的角度保持一致
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        }
     }
 
 

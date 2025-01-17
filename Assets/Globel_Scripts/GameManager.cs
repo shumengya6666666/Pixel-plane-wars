@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
     public int PlayerHealth { get; private set; }
     public int PlayerExperience { get; private set; }
     public int PlayerLevel { get; private set; }
-
     public int Money { get; private set; }
+    public string Survival_Time { get; private set; }
+    private float timer; // 计时器变量
 
     private void Start()
     {
@@ -32,6 +33,21 @@ public class GameManager : MonoBehaviour
 
         // 不销毁该物体，以便在场景切换时仍然存在
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Update()
+    {
+        // 增加计时器的时间
+        timer += Time.deltaTime;
+
+        // 计算小时、分钟和秒
+        int hours = Mathf.FloorToInt(timer / 3600);
+        int minutes = Mathf.FloorToInt((timer % 3600) / 60);
+        int seconds = Mathf.FloorToInt(timer % 60);
+
+        // 格式化为 "00:00:00" 的形式
+        Survival_Time = string.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
+
     }
 
     public void UpdatePlayerPosition(Vector3 newPosition)

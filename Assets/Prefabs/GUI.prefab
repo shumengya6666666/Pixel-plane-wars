@@ -168,7 +168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 378, y: 233}
+  m_AnchoredPosition: {x: 339.5, y: 243.5}
   m_SizeDelta: {x: 195.561, y: 40}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &6554143463720326439
@@ -522,7 +522,7 @@ GameObject:
   - component: {fileID: 4780096860243737957}
   - component: {fileID: 8751554929355620760}
   m_Layer: 5
-  m_Name: Title
+  m_Name: Timer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -544,8 +544,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -153, y: 290}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 335, y: 146.25}
+  m_SizeDelta: {x: 386.1022, y: 46.4886}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &4780096860243737957
 CanvasRenderer:
@@ -575,7 +575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u6B22\u4E50\u6253\u98DE\u673A"
+  m_text: "\u5B58\u6D3B\u65F6\u95F4\uFF1A00:00"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eb8bacd46357fb4418b3d529965e7b08, type: 2}
   m_sharedMaterial: {fileID: 2979193228837331801, guid: eb8bacd46357fb4418b3d529965e7b08, type: 2}
@@ -789,7 +789,6 @@ GameObject:
   - component: {fileID: 6045445928486488943}
   - component: {fileID: 6595074901889129413}
   - component: {fileID: 2648662369068927008}
-  - component: {fileID: 1271712500471115999}
   m_Layer: 5
   m_Name: Player_Pos
   m_TagString: Untagged
@@ -813,7 +812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 384, y: 312}
+  m_AnchoredPosition: {x: 334.75, y: 310.25}
   m_SizeDelta: {x: 195.561, y: 40}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &6595074901889129413
@@ -913,18 +912,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &1271712500471115999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6009940797600261191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c575269c0369504fbfac5d0039162b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6486093454794130326
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,8 +946,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -528.5088, y: 292}
-  m_SizeDelta: {x: 219.4824, y: 50}
+  m_AnchoredPosition: {x: -504.31985, y: 289.5}
+  m_SizeDelta: {x: 267.8602, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &685791045436942535
 CanvasRenderer:
@@ -990,7 +977,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u91D1\u5E01\uFF1A99999"
+  m_text: "\u6CE1\u6CE1\u5E01\uFF1A99999"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3bd21f304e77db54eb98a1f35f6a2680, type: 2}
   m_sharedMaterial: {fileID: -3509209986637506031, guid: 3bd21f304e77db54eb98a1f35f6a2680, type: 2}

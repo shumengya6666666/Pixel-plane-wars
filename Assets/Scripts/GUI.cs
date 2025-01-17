@@ -11,6 +11,7 @@ public class GUI : MonoBehaviour
     private TextMeshProUGUI Player_Money;
     private TextMeshProUGUI Player_Experience;
     private TextMeshProUGUI Player_Level;
+    private TextMeshProUGUI Player_Survival_Time;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class GUI : MonoBehaviour
         Player_Money = GameObject.Find("Money")?.GetComponent<TextMeshProUGUI>();
         Player_Experience = GameObject.Find("Experience")?.GetComponent<TextMeshProUGUI>();
         Player_Level = GameObject.Find("Level")?.GetComponent<TextMeshProUGUI>();
+        Player_Survival_Time = GameObject.Find("Timer")?.GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
@@ -50,7 +52,7 @@ public class GUI : MonoBehaviour
 
             if(Player_Money != null)
             {
-                Player_Money.text = "金币："+GameManager.Instance.Money;
+                Player_Money.text = "泡泡币："+GameManager.Instance.Money;
             }
 
             if (Player_Experience != null)
@@ -60,6 +62,12 @@ public class GUI : MonoBehaviour
 
             if (Player_Level != null) {
                 Player_Level.text = "等级：" + GameManager.Instance.PlayerLevel;
+            }
+            
+
+            if (Player_Survival_Time != null)
+            {
+                Player_Survival_Time.text = "存活时间：" + GameManager.Instance.Survival_Time;
             }
 
         }
