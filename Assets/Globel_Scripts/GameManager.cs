@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     public int PlayerExperience { get; private set; }
     public int PlayerLevel { get; private set; }
 
+    public int Money { get; private set; }
+
     private void Start()
     {
         // 设置全局重力为 (0, 0, 0)
@@ -56,4 +58,15 @@ public class GameManager : MonoBehaviour
     {
         PlayerLevel = newPlayerLevel;  // 更新玩家位置
     }
+
+    public void UpdateMoney(int newMoney)
+    {
+        Money = newMoney;
+    }
+
+    public void AddMoney(int newMoney)
+    {
+        Money += newMoney;
+    }
+
 }

@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public int health = 100;
     public int level = 0;
     public int experience = 0;
+    public int money = 0;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         rb.interpolation = RigidbodyInterpolation2D.Interpolate; //  π”√≤Â÷µ
         cameraTransform = Camera.main.transform;
         GameManager.Instance.UpdatePlayerHealth(health);
+        GameManager.Instance.UpdateMoney(money);
     }
 
     void Update()

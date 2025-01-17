@@ -2,19 +2,20 @@ using UnityEngine;
 
 public class EnemyPlane : MonoBehaviour
 {
-    // 可配置的参数
+    // 外部变量 可配置的参数
     public bool isCanSuicide = true;
     public int SuicideTime = 20;
     public float speed = 9f; // 移动速度
     public float rotationSpeed = 200f; // 提高旋转速度使追踪更敏捷
-    private Transform player; // 玩家对象的引用
-
     public GameObject bulletPrefab; // 子弹预制体
     public float bulletSpeed = 10f; // 子弹速度
     public float fireRate = 1f; // 发射子弹的间隔时间
     public float attackRange = 10f;//敌人的攻击范围，达到此距离才可以发射子弹
-    private float nextFireTime = 0f; // 下一次发射时间
+    public int Generated_money = 10;
 
+    //内部变量
+    private Transform player; // 玩家对象的引用
+    private float nextFireTime = 0f; // 下一次发射时间
 
     void Start()
     {
@@ -92,20 +93,22 @@ public class EnemyPlane : MonoBehaviour
     // 撞到物体时的处理
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("AirWall"))
+        if (collision.gameObject.CompareTag("AirWall"))//与空气墙碰撞
         {
             Debug.Log("敌人飞机撞到墙了！");
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("PlayerPlane"))
+        else if (collision.gameObject.CompareTag("PlayerPlane"))//与玩家飞机碰撞
         {
             Debug.Log("敌人飞机与玩家碰撞！");
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("PlayerBullet"))
+        else if (collision.gameObject.CompareTag("PlayerBullet"))//与玩家子弹碰撞
         {
             Destroy(gameObject);
             Destroy(collision.gameObject); // 销毁子弹
+            GameManager.Instance.AddMoney(Generated_money);
         }
+
     }
 }

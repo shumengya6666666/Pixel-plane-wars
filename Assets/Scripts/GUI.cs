@@ -8,6 +8,7 @@ public class GUI : MonoBehaviour
     private TextMeshProUGUI Player_Pos;  // 存储 TextMeshProUGUI 组件
     private TextMeshProUGUI Enemy_Num;
     private TextMeshProUGUI Player_Health;
+    private TextMeshProUGUI Money;
 
     void Start()
     {
@@ -41,6 +42,12 @@ public class GUI : MonoBehaviour
             {
                 Player_Health.text = "生命值: " + GameManager.Instance.PlayerHealth;
             }
+
+            if(Money != null)
+            {
+                Money.text = "金币："+GameManager.Instance.Money;
+            }
+
         }
     }
 }
