@@ -31,16 +31,18 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) )
+        // 检查空格键或鼠标左键是否被按下
+        if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
         {
-            if (Time.time - lastShootTime >= shootInterval) {
+            // 检查是否已达到射击间隔
+            if (Time.time - lastShootTime >= shootInterval)
+            {
                 Shoot();
                 lastShootTime = Time.time; // 更新上次射击时间
             }
-
-
         }
     }
+
 
     void FixedUpdate()
     {
