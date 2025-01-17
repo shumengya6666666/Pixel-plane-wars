@@ -59,7 +59,7 @@ public class GUI : MonoBehaviour
             }
 
             if (Player_Level != null) {
-                Player_Level.text = "等级：" + GameManager.Instance.PlayerExperience;
+                Player_Level.text = "等级：" + GameManager.Instance.PlayerLevel;
             }
 
         }

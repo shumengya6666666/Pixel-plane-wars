@@ -93,9 +93,23 @@ public class PlayerMovement : MonoBehaviour
     //}
 
     //这种是朝着玩家前进的方向生成子弹---------------------------------------------------------------
-    void Shoot()
+    // 射击方法
+    public void Shoot()
     {
-        // 子弹方向设置为玩家前进的方向
+
+        // 普通射击（默认射1颗子弹）
+        // ShootSingleBullet();
+        // 散弹射击
+        //ShootShotgun(3);
+        //ShootRadial(27);
+
+        ShootHorizontal();
+    }
+
+
+    // 普通射击
+    private void ShootSingleBullet()
+    {
         Vector2 direction = transform.up; // 玩家前进的方向
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
@@ -106,6 +120,73 @@ public class PlayerMovement : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
+
+    // 散弹射击
+    private void ShootShotgun(int shotgunPellets)
+    {
+        // 散弹的发射角度范围
+        float angleStep = 10f;  // 每颗子弹之间的角度差
+        float spread = (shotgunPellets - 1) * angleStep / 2;
+
+        // 遍历发射多颗子弹
+        for (int i = 0; i < shotgunPellets; i++)
+        {
+            float currentAngle = -spread + i * angleStep;
+            Vector2 direction = Quaternion.Euler(0, 0, currentAngle) * transform.up;
+
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+            bulletRb.velocity = direction * bulletSpeed;
+
+            // 旋转子弹，使其与发射方向一致
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        }
+    }
+
+
+    // 辐射射击（360度发射）
+    private void ShootRadial(int radialPellets)
+    {
+        // 确保辐射射击至少发射一个子弹
+        if (radialPellets <= 0) radialPellets = 1;
+
+        float angleStep = 360f / radialPellets;  // 计算子弹之间的角度差
+
+        // 遍历发射所有子弹
+        for (int i = 0; i < radialPellets; i++)
+        {
+            // 计算每个子弹的发射角度
+            float currentAngle = i * angleStep;
+            Vector2 direction = Quaternion.Euler(0, 0, currentAngle) * transform.up;
+
+            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+            bulletRb.velocity = direction * bulletSpeed;
+
+            // 旋转子弹，使其与发射方向一致
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        }
+    }
+
+
+    // 水平射击（发射多个平行子弹）
+    private void ShootHorizontal()
+    {
+        Vector2 direction = transform.up; // 玩家前进的方向
+
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        //GameObject bullet2 = Instantiate(bulletPrefab, firePoint.position+(3,0), Quaternion.identity);
+        GameObject bullet3 = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+        bulletRb.velocity = direction * bulletSpeed;
+
+        // 保持子弹与玩家的前进方向一致
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    }
+
 
 
     void OnCollisionEnter2D(Collision2D collision)
