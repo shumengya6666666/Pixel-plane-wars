@@ -29,19 +29,27 @@ public class PlayerMovement : MonoBehaviour
         cameraTransform = Camera.main.transform;
         GameManager.Instance.UpdatePlayerHealth(health);
         GameManager.Instance.UpdateMoney(money);
+        GameManager.Instance.UpdatePlayerExperience(experience);
+        GameManager.Instance.UpdatePlayerLevel(level);
     }
 
     void Update()
     {
-        // 检查空格键或鼠标左键是否被按下
+        // 检查是否按下空格键或鼠标左键
         if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
         {
-            // 检查是否已达到射击间隔
+            // 长按时的持续射击
             if (Time.time - lastShootTime >= shootInterval)
             {
                 Shoot();
                 lastShootTime = Time.time; // 更新上次射击时间
             }
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        {
+            // 点击时发射一颗子弹
+            Shoot();
+            lastShootTime = Time.time; // 更新上次射击时间
         }
     }
 

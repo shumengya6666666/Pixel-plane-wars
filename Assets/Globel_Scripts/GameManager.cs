@@ -41,22 +41,22 @@ public class GameManager : MonoBehaviour
 
     public void UpdateEnemyNumber(int newNumber)
     {
-        EnemyNumvber = newNumber;  // 更新玩家位置
+        EnemyNumvber = newNumber;  // 更新
     }
 
     public void UpdatePlayerHealth(int newHealth)
     {
-        PlayerHealth = newHealth;  // 更新玩家位置
+        PlayerHealth = newHealth;  // 更新玩家
     }
 
     public void UpdatePlayerExperience(int newExperience)
     {
-        PlayerExperience = newExperience;  // 更新玩家位置
+        PlayerExperience = newExperience;  // 更新玩家
     }
 
     public void UpdatePlayerLevel(int newPlayerLevel)
     {
-        PlayerLevel = newPlayerLevel;  // 更新玩家位置
+        PlayerLevel = newPlayerLevel;  // 更新玩家
     }
 
     public void UpdateMoney(int newMoney)
@@ -67,6 +67,11 @@ public class GameManager : MonoBehaviour
     public void AddMoney(int newMoney)
     {
         Money += newMoney;
+    }
+
+    public void AddPlayerExperience(int newExperience)
+    {
+        PlayerExperience += newExperience;
     }
 
 }

@@ -8,7 +8,9 @@ public class GUI : MonoBehaviour
     private TextMeshProUGUI Player_Pos;  // 存储 TextMeshProUGUI 组件
     private TextMeshProUGUI Enemy_Num;
     private TextMeshProUGUI Player_Health;
-    private TextMeshProUGUI Money;
+    private TextMeshProUGUI Player_Money;
+    private TextMeshProUGUI Player_Experience;
+    private TextMeshProUGUI Player_Level;
 
     void Start()
     {
@@ -16,6 +18,9 @@ public class GUI : MonoBehaviour
         Player_Pos = GameObject.Find("Player_Pos")?.GetComponent<TextMeshProUGUI>();
         Enemy_Num = GameObject.Find("Enemy_Num")?.GetComponent<TextMeshProUGUI>();
         Player_Health = GameObject.Find("Health")?.GetComponent<TextMeshProUGUI>();
+        Player_Money = GameObject.Find("Money")?.GetComponent<TextMeshProUGUI>();
+        Player_Experience = GameObject.Find("Experience")?.GetComponent<TextMeshProUGUI>();
+        Player_Level = GameObject.Find("Level")?.GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
@@ -43,9 +48,18 @@ public class GUI : MonoBehaviour
                 Player_Health.text = "生命值: " + GameManager.Instance.PlayerHealth;
             }
 
-            if(Money != null)
+            if(Player_Money != null)
             {
-                Money.text = "金币："+GameManager.Instance.Money;
+                Player_Money.text = "金币："+GameManager.Instance.Money;
+            }
+
+            if (Player_Experience != null)
+            {
+                Player_Experience.text = "经验：" + GameManager.Instance.PlayerExperience;
+            }
+
+            if (Player_Level != null) {
+                Player_Level.text = "等级：" + GameManager.Instance.PlayerExperience;
             }
 
         }

@@ -3,15 +3,16 @@ using UnityEngine;
 public class EnemyPlane : MonoBehaviour
 {
     // 外部变量 可配置的参数
-    public bool isCanSuicide = true;
-    public int SuicideTime = 20;
+    public bool isCanSuicide = true;//是否敌人消失
+    public int SuicideTime = 20;//敌人消失的时间
     public float speed = 9f; // 移动速度
     public float rotationSpeed = 200f; // 提高旋转速度使追踪更敏捷
     public GameObject bulletPrefab; // 子弹预制体
     public float bulletSpeed = 10f; // 子弹速度
     public float fireRate = 1f; // 发射子弹的间隔时间
     public float attackRange = 10f;//敌人的攻击范围，达到此距离才可以发射子弹
-    public int Generated_money = 10;
+    public int Generated_Money = 10;//敌人掉落的金币数
+    public int Generated_Experience = 5;//敌人掉落的经验值
 
     //内部变量
     private Transform player; // 玩家对象的引用
@@ -107,7 +108,8 @@ public class EnemyPlane : MonoBehaviour
         {
             Destroy(gameObject);
             Destroy(collision.gameObject); // 销毁子弹
-            GameManager.Instance.AddMoney(Generated_money);
+            GameManager.Instance.AddMoney(Generated_Money); 
+            GameManager.Instance.AddPlayerExperience(Generated_Experience);
         }
 
     }
