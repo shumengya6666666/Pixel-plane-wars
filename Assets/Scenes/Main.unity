@@ -430,6 +430,8 @@ MonoBehaviour:
   spawnInterval: 0.5
   itemPrefabs:
   - {fileID: 2921306032921190488, guid: 632fe69a72f33824abe65518e7fd0e72, type: 3}
+  - {fileID: 2921306032921190488, guid: ce0752c0199a4f24287a0ac35917b5fc, type: 3}
+  - {fileID: 2921306032921190488, guid: 71205f75dde1a1b4ca9e5d23c0edb9ae, type: 3}
 --- !u!4 &1028563491
 Transform:
   m_ObjectHideFlags: 0
