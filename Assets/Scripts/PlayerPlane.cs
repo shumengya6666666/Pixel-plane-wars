@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerPlane : MonoBehaviour
 {
@@ -233,22 +234,26 @@ public class PlayerPlane : MonoBehaviour
     }
 
 
-    void EndGame()
+    public void EndGame()
     {
-        // 游戏结束的处理逻辑
+        // 输出游戏结束的日志
         Debug.Log("-----------游戏结束-----------");
+
+        // 加载名为 "GameOverScene" 的场景
+        SceneManager.LoadScene("GameOverScene");
 
         // 停止游戏的进行
         Time.timeScale = 0;  // 暂停游戏
     }
 
-    void isKill(int health)
+    // 检查玩家是否死亡
+    public void isKill(int health)
     {
         // 如果血量为0，游戏结束
         if (health <= 0)
         {
             Debug.Log("----------玩家死亡----------");
-            EndGame();
+            EndGame(); // 调用 EndGame 方法，触发游戏结束并加载场景
         }
     }
 
