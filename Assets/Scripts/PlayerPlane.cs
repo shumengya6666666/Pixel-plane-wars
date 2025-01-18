@@ -15,7 +15,7 @@ public class PlayerPlane : MonoBehaviour
     public int level = 0;
     public int money = 0;
     public GameObject bulletPrefab; // 子弹预制体
-    public List<int> experienceToLevelUp = new List<int> { 50, 80, 150, 220, 300, 400, 520, 670 };  // 每个等级需要的经验
+    public List<int> experienceToLevelUp = new List<int> { 30, 50, 100, 150, 220, 300, 400, 550 };  // 每个等级需要的经验
     public float accelerationSpeed = 3f;  // 加速时的增量
     public float maxSpeed = 12f; // 最大速度限制，设置为forwardSpeed的两倍
     // 新增：音效相关变量
