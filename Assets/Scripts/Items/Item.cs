@@ -13,11 +13,6 @@ public class Item : MonoBehaviour
     }
 
 
-    void Update()
-    {
-        
-    }
-
     void OnCollisionEnter2D(Collision2D collision)
     {
         // 检查碰撞体是否有标签 "air_wall"
