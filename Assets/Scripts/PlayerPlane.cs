@@ -13,7 +13,6 @@ public class PlayerPlane : MonoBehaviour
     public float shootInterval = 1f; // 每秒射击一次
     public int health = 100;
     public int level = 0;
-    //public int experience = 0;
     public int money = 0;
     public GameObject bulletPrefab; // 子弹预制体s
     // 升级所需经验,先做到8级再说
