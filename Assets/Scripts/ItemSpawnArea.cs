@@ -1,62 +1,61 @@
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class ItemSpawnArea : MonoBehaviour
 {
-    public float spawnAreaSize = 10f; // Éú³ÉÇøÓòµÄ±ß³¤
-    public float spawnInterval = 1f;  // Éú³É¼ä¸ôÊ±¼ä
-    public GameObject itemPrefab;     // ÌØÊâÎïÆ·µÄÔ¤ÖÆÌå
-    private int itemNumber = 0;       // ÎïÆ·µÄÊıÁ¿
-    private float probability;
+    public float spawnAreaSize = 10f; // ç”ŸæˆåŒºåŸŸçš„è¾¹é•¿
+    public float spawnInterval = 1f;  // ç”Ÿæˆé—´éš”æ—¶é—´
+    public GameObject itemPrefab;     // ç‰¹æ®Šç‰©å“çš„é¢„åˆ¶ä½“
+    private int itemNumber = 0;       // ç‰©å“çš„æ•°é‡
+    private float probability = 0.5f; // å‡è®¾ç‰©å“ç”Ÿæˆæ¦‚ç‡ä¸º 50%
 
     void Start()
     {
-        // ¶¨ÆÚÉú³ÉÌØÊâÎïÆ·
+        // å®šæœŸç”Ÿæˆç‰¹æ®Šç‰©å“
         InvokeRepeating("SpawnItem", 0f, spawnInterval);
     }
 
     void OnDrawGizmos()
     {
-        // ÉèÖÃ Gizmo ÑÕÉ«
+        // è®¾ç½® Gizmo é¢œè‰²
         Gizmos.color = Color.green;
 
-        // »æÖÆÒ»¸öÕı·½ĞÎÇøÓò£¬±íÊ¾ÎïÆ·Éú³ÉµÄÇøÓò
+        // ç»˜åˆ¶ä¸€ä¸ªæ­£æ–¹å½¢åŒºåŸŸï¼Œè¡¨ç¤ºç‰©å“ç”Ÿæˆçš„åŒºåŸŸ
         Gizmos.DrawWireCube(transform.position, new Vector3(spawnAreaSize, spawnAreaSize, 0f));
     }
 
     public void SpawnItem()
     {
-        // Ëæ»úÉú³É X ºÍ Z ×ø±ê£¬È·±£ÔÚÕı·½ĞÎÇøÓòÄÚ
+        // éšæœºç”Ÿæˆ X å’Œ Z åæ ‡ï¼Œç¡®ä¿åœ¨æ­£æ–¹å½¢åŒºåŸŸå†…
         float x = Random.Range(-spawnAreaSize / 2f, spawnAreaSize / 2f);
         float z = Random.Range(-spawnAreaSize / 2f, spawnAreaSize / 2f);
 
-        // Éú³ÉÎïÆ·µÄËæ»úÎ»ÖÃ
+        // ç”Ÿæˆç‰©å“çš„éšæœºä½ç½®
         Vector3 randomPosition = new Vector3(x, 0f, z) + transform.position;
 
-        // Êä³öÉú³ÉµÄÎ»ÖÃ
-        Debug.Log("ÏÂÒ»¸öÎïÆ·Éú³ÉÔÚ: " + randomPosition);
+        // è¾“å‡ºç”Ÿæˆçš„ä½ç½®
+        Debug.Log("ä¸‹ä¸€ä¸ªç‰©å“ç”Ÿæˆåœ¨: " + randomPosition);
 
-        // »ñÈ¡ÎïÆ·¶ÔÏóµÄ Item ×é¼ş£¬²¢´«µİÉú³É¸ÅÂÊ
-        Item item = itemPrefab.GetComponent<Item>();
-        if (item != null)
-        {
-           // probability = item.Generation_Probability;
-        }
+        // è·å–ç‰©å“å¯¹è±¡çš„ Item ç»„ä»¶ï¼Œå¹¶ä¼ é€’ç”Ÿæˆæ¦‚ç‡
+        //Item item = itemPrefab.GetComponent<Item>();
+        //if (item != null)
+       // {
+       //     probability = item.Generation_Probability; // ä½¿ç”¨ç‰©å“çš„ç”Ÿæˆæ¦‚ç‡
+      //  }
 
-        // Éú³ÉÎïÆ·µÄ¸ÅÂÊ
-        float generationProbability = Random.Range(0f, 1f); // Éú³ÉÒ»¸ö [0, 1) Ö®¼äµÄËæ»úÖµ
+        // ç”Ÿæˆç‰©å“çš„æ¦‚ç‡
+        float generationProbability = Random.Range(0f, 1f); // ç”Ÿæˆä¸€ä¸ª [0, 1) ä¹‹é—´çš„éšæœºå€¼
 
-        // ¼ÙÉèÎïÆ·Éú³É¸ÅÂÊÎª 50%
+        // åˆ¤æ–­æ˜¯å¦ç”Ÿæˆç‰©å“
         if (generationProbability <= probability)
         {
-            // ÊµÀı»¯ÎïÆ·
+            // å®ä¾‹åŒ–ç‰©å“
             Instantiate(itemPrefab, randomPosition, Quaternion.identity);
-            // Éú³ÉÎïÆ·ÊıÁ¿Ôö¼Ó
+            // ç”Ÿæˆç‰©å“æ•°é‡å¢åŠ 
             itemNumber++;
         }
         else
         {
-            Debug.Log("Õâ´ÎÃ»ÓĞÉú³ÉÎïÆ·¡£");
+            Debug.Log("è¿™æ¬¡æ²¡æœ‰ç”Ÿæˆç‰©å“ã€‚");
         }
     }
 }
