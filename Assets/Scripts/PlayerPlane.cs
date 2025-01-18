@@ -10,20 +10,20 @@ public class PlayerPlane : MonoBehaviour
     public float rotationSpeed = 100f; // 旋转速度
     public Transform firePoint; // 发射子弹的位置
     public float bulletSpeed = 10f; // 子弹速度
-    public GameObject bulletPrefab; // 子弹预制体
     public float shootInterval = 1f; // 每秒射击一次
     public int health = 100;
     public int level = 0;
-    public int experience = 0;
+    //public int experience = 0;
     public int money = 0;
-
+    public GameObject bulletPrefab; // 子弹预制体s
+    // 升级所需经验,先做到8级再说
+    public List<int> experienceToLevelUp = new List<int> { 50, 80, 150, 220, 300, 400, 520, 670 };  // 每个等级需要的经验
     // 加速相关变量
-    public float accelerationSpeed = 5f;  // 加速时的增量
-    public float maxSpeed = 20f; // 最大速度限制
+    public float accelerationSpeed = 3f;  // 加速时的增量
+    public float maxSpeed = 10f; // 最大速度限制
 
-    // 音效变量
-    public AudioClip shootSound;  // 射击音效
-    private AudioSource audioSource; // 用于播放音效
+
+
 
     // 私有变量
     private Rigidbody2D rb;
@@ -39,17 +39,17 @@ public class PlayerPlane : MonoBehaviour
         cameraTransform = Camera.main.transform;
         GameManager.Instance.UpdatePlayerHealth(health);
         GameManager.Instance.UpdateMoney(money);
-        GameManager.Instance.UpdatePlayerExperience(experience);
+       // GameManager.Instance.UpdatePlayerExperience(experience);
         GameManager.Instance.UpdatePlayerLevel(level);
 
         currentSpeed = forwardSpeed; // 初始化当前速度
-
-        // 获取AudioSource组件
-        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
+        // 检查是否升级
+        CheckLevelUp();
+
         // 记录上一帧的时间
         float currentTime = Time.time;
 
@@ -88,6 +88,8 @@ public class PlayerPlane : MonoBehaviour
             // 如果没有按住W键，恢复到默认速度
             currentSpeed = forwardSpeed;
         }
+
+
     }
 
     // 处理加速时需要执行的操作
@@ -97,6 +99,8 @@ public class PlayerPlane : MonoBehaviour
         Debug.Log("加速中...");
         GameManager.Instance.Money -= 1;
     }
+
+    // 检查是否升级
 
     void FixedUpdate()
     {
@@ -124,9 +128,6 @@ public class PlayerPlane : MonoBehaviour
 
     public void Shoot()
     {
-        // 播放射击音效
-        audioSource.PlayOneShot(shootSound);
-
         // 普通射击（默认射1颗子弹）
         ShootSingleBullet();
     }
@@ -192,4 +193,80 @@ public class PlayerPlane : MonoBehaviour
             EndGame(); // 调用 EndGame 方法，触发游戏结束并加载场景
         }
     }
+
+    void CheckLevelUp()
+    {
+       // Debug.Log("执行升级函数！");
+        // 判断当前经验值是否达到升级所需的经验
+        if (GameManager.Instance.PlayerExperience >= experienceToLevelUp[level])
+        {
+            Debug.Log("执行升级函数！");
+            level++; // 升级
+            GameManager.Instance.PlayerExperience = 0; // 清空当前经验
+
+            // 使用 switch 精确处理每个等级的属性变化
+            switch (level)
+            {
+                case 1:
+                    health += 12;
+                    forwardSpeed += 0;
+                    bulletSpeed += 0;
+                    break;
+
+                case 2:
+                    health += 3;
+                    forwardSpeed += 1;
+                    bulletSpeed += 0;
+                    break;
+
+                case 3:
+                    health += 3;
+                    forwardSpeed += 1;
+                    bulletSpeed += 1;
+                    break;
+
+                case 4:
+                    health += 4;
+                    forwardSpeed += 1;
+                    bulletSpeed += 1;
+                    break;
+
+                case 5:
+                    health += 8;
+                    forwardSpeed += 1;
+                    bulletSpeed += 1;
+                    break;
+
+                case 6:
+                    health += 5;
+                    forwardSpeed += 1;
+                    bulletSpeed += 1;
+                    break;
+
+                case 7:
+                    health += 5;
+                    forwardSpeed += 1;
+                    bulletSpeed += 1;
+                    break;
+
+                case 8:
+                    health += 5;
+                    forwardSpeed += 1;
+                    bulletSpeed += 1;
+                    break;
+
+                default:
+                    // 如果超出最大等级，什么都不做
+                    break;
+            }
+
+            // 更新玩家属性和UI
+            GameManager.Instance.UpdatePlayerHealth(health);
+           // GameManager.Instance.UpdatePlayerExperience(experience);
+            GameManager.Instance.UpdatePlayerLevel(level);
+        }
+    }
+
 }
+
+

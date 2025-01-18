@@ -134,7 +134,7 @@ public class EnemyPlane : MonoBehaviour
     {
         ShootSingleBullet();
     }
-
+//----------------攻击方式，待补充-------------------------------------------
     //普通攻击
     public void ShootSingleBullet()
     {
@@ -148,7 +148,6 @@ public class EnemyPlane : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
-
     // 散弹射击
     public void ShootShotgun(int shotgunPellets)
     {
@@ -171,8 +170,6 @@ public class EnemyPlane : MonoBehaviour
             bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
     }
-
-
     // 辐射射击（360度发射）
     public void ShootRadial(int radialPellets)
     {
@@ -197,8 +194,6 @@ public class EnemyPlane : MonoBehaviour
             bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
     }
-
-
     // 水平射击（发射多个平行子弹）
     public void ShootHorizontal(int bulletCount)
     {
@@ -231,11 +226,11 @@ public class EnemyPlane : MonoBehaviour
             bullet.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
     }
-
+//----------------攻击方式，待补充-------------------------------------------
 
 
     // 撞到物体时的处理
-  public  void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("AirWall")) // 与空气墙碰撞
         {
