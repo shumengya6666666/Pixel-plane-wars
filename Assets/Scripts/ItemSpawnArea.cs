@@ -4,7 +4,7 @@ public class ItemSpawnArea : MonoBehaviour
 {
     public float spawnAreaSize = 10f; // 生成区域的边长
     public float spawnInterval = 1f;  // 生成间隔时间
-    public GameObject itemPrefab;     // 特殊道具的预制体
+    public GameObject[] itemPrefabs;  // 特殊道具的预制体数组
 
     private int itemNumber = 0;       // 道具的数量
     private float probability = 0.5f; // 假设物品生成概率为 50%
@@ -36,8 +36,12 @@ public class ItemSpawnArea : MonoBehaviour
         // 输出生成的位置
         Debug.Log("下一个道具生成在: " + randomPosition);
 
+        // 从道具预制体数组中随机选择一个
+        int index = Random.Range(0, itemPrefabs.Length);
+        GameObject selectedPrefab = itemPrefabs[index];
+
         // 获取物品对象的 Item 组件，并传递生成概率
-        Item item = itemPrefab.GetComponent<Item>();
+        Item item = selectedPrefab.GetComponent<Item>();
         if (item != null)
         {
             probability = item.Generation_Probability; // 获取物品的生成概率
@@ -50,7 +54,7 @@ public class ItemSpawnArea : MonoBehaviour
         if (generationProbability <= probability)
         {
             // 实例化物品
-            Instantiate(itemPrefab, randomPosition, Quaternion.identity);
+            Instantiate(selectedPrefab, randomPosition, Quaternion.identity);
             // 生成物品数量增加
             itemNumber++;
         }
