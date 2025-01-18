@@ -1,6 +1,4 @@
 using UnityEngine;
-using static EnemyPlane;
-using static UnityEditor.Progress;
 
 public class EnemyPlane : MonoBehaviour
 {

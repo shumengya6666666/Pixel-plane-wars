@@ -12,15 +12,39 @@ public class GameOverUI : MonoBehaviour
         // 检查 GameManager 实例是否存在，然后获取数据
         if (GameManager.Instance != null)
         {
-            // 从 GameManager 获取数据并显示在 UI 上
-            survivalTimeText.text = "存活时间: " + GameManager.Instance.Survival_Time;
-            playerLevelText.text = "等级: " + GameManager.Instance.PlayerLevel;
-            playerMoneyText.text = "金钱: " + GameManager.Instance.Money;
+            // 检查 TextMeshPro 组件是否已赋值
+            if (survivalTimeText != null)
+            {
+                survivalTimeText.text = "存活时间: " + GameManager.Instance.Survival_Time;
+            }
+            else
+            {
+                Debug.LogError("survivalTimeText .");
+            }
+
+            if (playerLevelText != null)
+            {
+                playerLevelText.text = "等级: " + GameManager.Instance.PlayerLevel;
+            }
+            else
+            {
+                Debug.LogError("playerLevelText is not assigned in the Inspector.");
+            }
+
+            if (playerMoneyText != null)
+            {
+                playerMoneyText.text = "金钱: " + GameManager.Instance.Money;
+            }
+            else
+            {
+                Debug.LogError("playerMoneyText is not assigned in the Inspector.");
+            }
         }
         else
         {
             Debug.LogError("GameManager instance not found.");
         }
     }
+
 }
 
