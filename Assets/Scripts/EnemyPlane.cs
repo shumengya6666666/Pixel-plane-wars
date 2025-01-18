@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class EnemyPlane : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class EnemyPlane : MonoBehaviour
     public bool isCanSuicide = true; // 是否敌人消失
     public int SuicideTime = 20; // 敌人消失的时间
     public float speed = 9f; // 移动速度
+    public int enemyHealth = 20; //敌人生命值
     public float rotationSpeed = 200f; // 提高旋转速度使追踪更敏捷
     public GameObject bulletPrefab; // 子弹预制体
     public float bulletSpeed = 10f; // 子弹速度
@@ -42,6 +44,8 @@ public class EnemyPlane : MonoBehaviour
 
     void Update()
     {
+        isKill(enemyHealth);
+
         // 如果玩家引用无效，尝试重新获取（处理玩家可能被重新创建的情况）
         if (player == null)
         {
@@ -111,10 +115,27 @@ public class EnemyPlane : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("PlayerBullet")) // 与玩家子弹碰撞
         {
-            Destroy(gameObject);
+
             Destroy(collision.gameObject); // 销毁子弹
+            PlayerBullet playerbullet = collision.gameObject.GetComponent<PlayerBullet>();
+
+            if (playerbullet != null)
+            {
+                enemyHealth -= playerbullet.Bullet_Damage;
+            }
             GameManager.Instance.AddMoney(Generated_Money);
             GameManager.Instance.AddPlayerExperience(Generated_Experience);
+        }
+    }
+
+
+    void isKill(int health)
+    {
+        // 如果血量为0，游戏结束
+        if (health <= 0)
+        {
+            Debug.Log("----------敌人死亡----------");
+            Destroy(gameObject);
         }
     }
 }

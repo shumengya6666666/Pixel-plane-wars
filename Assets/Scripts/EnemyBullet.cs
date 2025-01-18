@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
+    public int Bullet_Damage = 5;
+    public float Disappear_Time = 5;
+
     void Start()
     {
         // 在 5 秒后销毁子弹对象
-        Destroy(gameObject, 5f); // 5f 表示 5 秒后销毁该对象
+        Destroy(gameObject, Disappear_Time); // 5f 表示 5 秒后销毁该对象
     }
 
     void Update()
     {
-        // 你可以在这里添加子弹的移动逻辑
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -25,7 +27,4 @@ public class Bullet : MonoBehaviour
             //Debug.Log("子弹撞到了空气墙");
         }
     }
-
-
-
 }
