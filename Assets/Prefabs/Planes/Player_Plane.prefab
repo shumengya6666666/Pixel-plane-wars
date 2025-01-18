@@ -112,6 +112,7 @@ MonoBehaviour:
   experienceToLevelUp: 320000005000000096000000dc0000002c01000090010000080200009e020000
   accelerationSpeed: 5
   maxSpeed: 20
+  shootSound: {fileID: 8300000, guid: 76d175fc5bc018b4e9f1d37a81a2dbd5, type: 3}
 --- !u!50 &4707592517326923873
 Rigidbody2D:
   serializedVersion: 4

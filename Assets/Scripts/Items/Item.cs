@@ -7,14 +7,9 @@ public class Item : MonoBehaviour
     public float Generation_Probability = 0.5f; // 道具的生成概率
     public float Disappear_Time = 5f; //道具消失的时间
     public Sprite itemSprite;  // 用来设置道具的图片
-    public AudioClip collisionSound;  // 声音资源
-
-    private AudioSource audioSource;   // 音频播放组件
 
     void Start()
     {
-        // 获取当前物体的 AudioSource 组件
-        audioSource = GetComponent<AudioSource>();
         Destroy(gameObject, Disappear_Time);
 
         // 设置道具的图片
@@ -39,11 +34,6 @@ public class Item : MonoBehaviour
             Destroy(gameObject);
             Trigger_prop_function(collision.gameObject);
 
-            // 播放碰撞声音
-            if (audioSource != null && collisionSound != null)
-            {
-                audioSource.PlayOneShot(collisionSound); // 播放音效
-            }
         }
     }
 

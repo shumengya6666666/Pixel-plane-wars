@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public int Money { get;  set; }
     public string Survival_Time { get;set; }
     public float timer; // 计时器变量
+    public int ItemNumber { get; set; }
 
     private void Start()
     {
