@@ -17,32 +17,17 @@ public class GameOverUI : MonoBehaviour
             {
                 survivalTimeText.text = "存活时间: " + GameManager.Instance.Survival_Time;
             }
-            else
-            {
-                Debug.LogError("survivalTimeText .");
-            }
+
 
             if (playerLevelText != null)
             {
                 playerLevelText.text = "等级: " + GameManager.Instance.PlayerLevel;
-            }
-            else
-            {
-                Debug.LogError("playerLevelText is not assigned in the Inspector.");
             }
 
             if (playerMoneyText != null)
             {
                 playerMoneyText.text = "金钱: " + GameManager.Instance.Money;
             }
-            else
-            {
-                Debug.LogError("playerMoneyText is not assigned in the Inspector.");
-            }
-        }
-        else
-        {
-            Debug.LogError("GameManager instance not found.");
         }
     }
 

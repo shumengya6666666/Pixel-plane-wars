@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }  // 单例模式
-    public Vector3 PlayerPosition { get; private set; }  // 存储玩家位置
-    public int EnemyNumvber { get; private set; }
-    public int PlayerHealth { get; private set; }
-    public int PlayerExperience { get; private set; }
-    public int PlayerLevel { get; private set; }
-    public int Money { get; private set; }
-    public string Survival_Time { get; private set; }
+    public static GameManager Instance { get;set; }  // 单例模式
+    public Vector3 PlayerPosition { get; set; }  // 存储玩家位置
+    public int EnemyNumvber { get;set; }
+    public int PlayerHealth { get; set; }
+    public int PlayerExperience { get; set; }
+    public int PlayerLevel { get;set; }
+    public int Money { get;  set; }
+    public string Survival_Time { get;set; }
     private float timer; // 计时器变量
 
     private void Start()
