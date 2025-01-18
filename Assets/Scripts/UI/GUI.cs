@@ -12,6 +12,7 @@ public class GUI : MonoBehaviour
     private TextMeshProUGUI Player_Experience;
     private TextMeshProUGUI Player_Level;
     private TextMeshProUGUI Player_Survival_Time;
+    private TextMeshProUGUI Item_Num;
 
     void Start()
     {
@@ -23,9 +24,13 @@ public class GUI : MonoBehaviour
         Player_Experience = GameObject.Find("Experience")?.GetComponent<TextMeshProUGUI>();
         Player_Level = GameObject.Find("Level")?.GetComponent<TextMeshProUGUI>();
         Player_Survival_Time = GameObject.Find("Timer")?.GetComponent<TextMeshProUGUI>();
+        Item_Num = GameObject.Find("Item_Num")?.GetComponent<TextMeshProUGUI>();
+
+        // 开始每一秒调用一次 UpdateUI
+        InvokeRepeating("UpdateUI", 1f, 1f);
     }
 
-    void Update()
+    void UpdateUI()
     {
         // 获取全局的玩家位置
         if (GameManager.Instance != null)
@@ -36,13 +41,11 @@ public class GUI : MonoBehaviour
             if (Player_Pos != null)
             {
                 Player_Pos.text = "玩家坐标: (" + Mathf.RoundToInt(playerPosition.x) + "," + Mathf.RoundToInt(playerPosition.y) + ")";
-                //Player_Pos.text = "玩家坐标: (" + playerPosition.x.ToString("F0") + "," + playerPosition.y.ToString("F0") + ")";
-
             }
 
             if (Enemy_Num != null)
             {
-                Enemy_Num.text = "敌人数量: "+ GameManager.Instance.EnemyNumvber;
+                Enemy_Num.text = "敌人数量: " + GameManager.Instance.EnemyNumvber;
             }
 
             if (Player_Health != null)
@@ -50,9 +53,9 @@ public class GUI : MonoBehaviour
                 Player_Health.text = "生命值: " + GameManager.Instance.PlayerHealth;
             }
 
-            if(Player_Money != null)
+            if (Player_Money != null)
             {
-                Player_Money.text = "泡泡币："+GameManager.Instance.Money;
+                Player_Money.text = "泡泡币：" + GameManager.Instance.Money;
             }
 
             if (Player_Experience != null)
@@ -60,16 +63,20 @@ public class GUI : MonoBehaviour
                 Player_Experience.text = "经验：" + GameManager.Instance.PlayerExperience;
             }
 
-            if (Player_Level != null) {
+            if (Player_Level != null)
+            {
                 Player_Level.text = "等级：" + GameManager.Instance.PlayerLevel;
             }
-            
 
             if (Player_Survival_Time != null)
             {
                 Player_Survival_Time.text = "存活时间：" + GameManager.Instance.Survival_Time;
             }
 
+            if (Item_Num != null)
+            {
+                Item_Num.text = "道具数量：" + GameManager.Instance.ItemNumber;
+            }
         }
     }
 }

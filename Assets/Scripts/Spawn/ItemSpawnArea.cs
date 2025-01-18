@@ -57,6 +57,7 @@ public class ItemSpawnArea : MonoBehaviour
             Instantiate(selectedPrefab, randomPosition, Quaternion.identity);
             // 生成物品数量增加
             itemNumber++;
+            GameManager.Instance.ItemNumber = itemNumber;
         }
         else
         {

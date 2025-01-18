@@ -173,3 +173,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Generation_Probability: 0.5
   Disappear_Time: 5
+  itemSprite: {fileID: 0}
+  collisionSound: {fileID: 8300000, guid: 26a0f22b2ca684d4db44b99003b38575, type: 3}

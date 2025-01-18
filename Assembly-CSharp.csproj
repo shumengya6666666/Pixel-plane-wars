@@ -70,13 +70,13 @@
     <Compile Include="Assets\Scripts\UI\StartGameButton.cs" />
     <Compile Include="Assets\Scripts\UI\ExitGame.cs" />
     <Compile Include="Assets\Scripts\Spawn\ItemSpawnArea.cs" />
-    <Compile Include="Assets\SpeedItem.cs" />
     <Compile Include="Assets\Scripts\Spawn\Player_Generated_Pos.cs" />
     <Compile Include="Assets\Scripts\EnemyBullet.cs" />
     <Compile Include="Assets\Scripts\Spawn\EnemySpawnArea.cs" />
+    <Compile Include="Assets\Scripts\Items\SpeedItem.cs" />
     <Compile Include="Assets\Scripts\EndScreenManager.cs" />
     <Compile Include="Assets\Scripts\PlayerBullet.cs" />
-    <Compile Include="Assets\HealthItem.cs" />
+    <Compile Include="Assets\Scripts\Items\HealthItem.cs" />
     <Compile Include="Assets\Scripts\UI\GameOverUI.cs" />
     <Compile Include="Assets\EnemyDeploy.cs" />
   </ItemGroup>

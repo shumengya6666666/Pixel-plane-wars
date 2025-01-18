@@ -8,7 +8,6 @@ public class Item : MonoBehaviour
     public float Disappear_Time = 5f; //道具消失的时间
     public Sprite itemSprite;  // 用来设置道具的图片
 
-
     void Start()
     {
         Destroy(gameObject, Disappear_Time);
@@ -34,6 +33,7 @@ public class Item : MonoBehaviour
         {
             Destroy(gameObject);
             Trigger_prop_function(collision.gameObject);
+
         }
     }
 
