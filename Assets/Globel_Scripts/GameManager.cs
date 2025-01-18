@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public int PlayerLevel { get;set; }
     public int Money { get;  set; }
     public string Survival_Time { get;set; }
-    private float timer; // 计时器变量
+    public float timer; // 计时器变量
 
     private void Start()
     {

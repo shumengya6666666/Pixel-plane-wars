@@ -21,12 +21,17 @@ public class PlayerPlane : MonoBehaviour
     public float accelerationSpeed = 5f;  // 加速时的增量
     public float maxSpeed = 20f; // 最大速度限制
 
+    // 音效变量
+    public AudioClip shootSound;  // 射击音效
+    private AudioSource audioSource; // 用于播放音效
+
     // 私有变量
     private Rigidbody2D rb;
     private Transform cameraTransform;
     private float lastShootTime = 0f; // 上次射击的时间
     private float currentSpeed; // 当前前进速度
     private float lastAccelerationTime = 0f; //记录加速的时间
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -38,6 +43,9 @@ public class PlayerPlane : MonoBehaviour
         GameManager.Instance.UpdatePlayerLevel(level);
 
         currentSpeed = forwardSpeed; // 初始化当前速度
+
+        // 获取AudioSource组件
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -63,7 +71,7 @@ public class PlayerPlane : MonoBehaviour
         }
 
         // 加速控制：按住W键时加速
-        if (Input.GetKey(KeyCode.W)&&GameManager.Instance.Money>0)
+        if (Input.GetKey(KeyCode.W) && GameManager.Instance.Money > 0)
         {
             // 增加当前速度，最多不超过最大速度
             currentSpeed = Mathf.Min(currentSpeed + accelerationSpeed * Time.deltaTime, maxSpeed);
@@ -89,8 +97,6 @@ public class PlayerPlane : MonoBehaviour
         Debug.Log("加速中...");
         GameManager.Instance.Money -= 1;
     }
-
-
 
     void FixedUpdate()
     {
@@ -118,6 +124,9 @@ public class PlayerPlane : MonoBehaviour
 
     public void Shoot()
     {
+        // 播放射击音效
+        audioSource.PlayOneShot(shootSound);
+
         // 普通射击（默认射1颗子弹）
         ShootSingleBullet();
     }

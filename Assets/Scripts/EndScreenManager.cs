@@ -27,5 +27,8 @@ public class EndScreenManager : MonoBehaviour
 
         // 加载主菜单场景
         SceneManager.LoadScene("Main");
+
+        // 重置游戏时间
+        GameManager.Instance.timer = 0;
     }
 }
