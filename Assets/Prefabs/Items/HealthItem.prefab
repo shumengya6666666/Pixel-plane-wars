@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d4840a89f561b4cb21a975a3b437ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Generation_Probability: 0.5
+  Generation_Probability: 0.8
   Disappear_Time: 6
   itemSprite: {fileID: 0}
   healthIncrease: 30

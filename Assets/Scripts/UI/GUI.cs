@@ -13,7 +13,9 @@ public class GUI : MonoBehaviour
     private TextMeshProUGUI Player_Level;
     private TextMeshProUGUI Player_Survival_Time;
     private TextMeshProUGUI Item_Num;
-
+    private TextMeshProUGUI FPS;
+    private float deltaTime = 0.0f;
+    private float fps;
     void Start()
     {
         // 使用 GetComponent 获取 TextMeshProUGUI 组件
@@ -25,6 +27,7 @@ public class GUI : MonoBehaviour
         Player_Level = GameObject.Find("Level")?.GetComponent<TextMeshProUGUI>();
         Player_Survival_Time = GameObject.Find("Timer")?.GetComponent<TextMeshProUGUI>();
         Item_Num = GameObject.Find("Item_Num")?.GetComponent<TextMeshProUGUI>();
+        FPS = GameObject.Find("FPS")?.GetComponent<TextMeshProUGUI>();
 
         // 开始每一秒调用一次 UpdateUI
         InvokeRepeating("UpdateUI", 1f, 1f);
@@ -32,6 +35,7 @@ public class GUI : MonoBehaviour
 
     void UpdateUI()
     {
+
         // 获取全局的玩家位置
         if (GameManager.Instance != null)
         {
@@ -77,6 +81,20 @@ public class GUI : MonoBehaviour
             {
                 Item_Num.text = "道具数量：" + GameManager.Instance.ItemNumber;
             }
+
+            if (FPS != null)
+            {
+                FPS.text = "FPS: " + Mathf.Ceil(fps).ToString();
+            }
         }
+    }
+
+    private void Update()
+    {
+        // 累加每一帧的时间
+        deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
+
+        // 计算FPS，1/Time.deltaTime
+        fps = 1.0f / deltaTime;
     }
 }

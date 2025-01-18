@@ -4,7 +4,7 @@ using System.Collections;
 public class SpeedItem : Item
 {
     public float speedBoost = 2f; // 增加的速度倍数
-    public float duration = 5f; // 持续时间
+    public float duration = 3f; // 持续时间
     private float timer = 0f; // 计时器
     private bool isBoosting = false; // 是否处于加速状态
 

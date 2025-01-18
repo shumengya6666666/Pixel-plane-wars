@@ -171,3 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c411da2c0b0545429fe41737a005bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Generation_Probability: 0.8
+  Disappear_Time: 5
+  itemSprite: {fileID: 0}
+  speedBoost: 2
+  duration: 5

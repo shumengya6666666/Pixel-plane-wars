@@ -16,7 +16,6 @@ public class EnemyPlane : MonoBehaviour
     public int Generated_Experience = 5; // 敌人掉落的经验值
     public float Generation_Probability = 0.5f; // 敌人的生成概率
     public Sprite enemySprite;  // 用来存储敌人的图片
-
     public enum AttackType //敌人攻击方式
     {
         SingleShot,    // 普通攻击
@@ -28,11 +27,11 @@ public class EnemyPlane : MonoBehaviour
         Horizontal_3     // 水平射击
     }
     public AttackType attackType = AttackType.SingleShot; // 默认使用普通攻击
-
+    public float checkInterval = 0.5f; // 每0.5秒检查一次玩家位置
 
 
     // 内部变量
-
+    private float timeSinceLastCheck = 0f; // 用于计时
     private Transform player; // 玩家对象的引用
     private float nextFireTime = 0f; // 下一次发射时间
 
@@ -65,15 +64,21 @@ public class EnemyPlane : MonoBehaviour
 
   public  void Update()
     {
-        isKill(enemyHealth);
-
-        // 如果玩家引用无效，尝试重新获取（处理玩家可能被重新创建的情况）
-        if (player == null)
+        //添加一个0.5秒计时器
+        timeSinceLastCheck += Time.deltaTime;
+        if (timeSinceLastCheck >= checkInterval)
         {
-            GameObject playerObj = GameObject.FindGameObjectWithTag("PlayerPlane");
-            if (playerObj != null)
+            timeSinceLastCheck = 0f; // 重置计时器
+            isKill(enemyHealth);
+
+            // 如果玩家引用无效，尝试重新获取（处理玩家可能被重新创建的情况）
+            if (player == null)
             {
-                player = playerObj.transform;
+                GameObject playerObj = GameObject.FindGameObjectWithTag("PlayerPlane");
+                if (playerObj != null)
+                {
+                    player = playerObj.transform;
+                }
             }
         }
 

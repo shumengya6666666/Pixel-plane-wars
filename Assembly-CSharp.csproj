@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\main.cs" />
+    <Compile Include="Assets\Scripts\RadiationBomb.cs" />
     <Compile Include="Assets\Scripts\PlayerPlane.cs" />
     <Compile Include="Assets\Scripts\Items\Item.cs" />
     <Compile Include="Assets\Globel_Scripts\GameStartManager.cs" />
@@ -78,7 +79,6 @@
     <Compile Include="Assets\Scripts\PlayerBullet.cs" />
     <Compile Include="Assets\Scripts\Items\HealthItem.cs" />
     <Compile Include="Assets\Scripts\UI\GameOverUI.cs" />
-    <Compile Include="Assets\EnemyDeploy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
