@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerPlane : MonoBehaviour
 {
     //共有变量，玩家配置
     public float forwardSpeed = 10f; // 向前移动速度
