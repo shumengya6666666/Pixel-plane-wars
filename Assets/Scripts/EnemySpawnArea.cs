@@ -4,7 +4,7 @@ public class EnemySpawnArea : MonoBehaviour
 {
     public float spawnRadius = 10f;  // 生成区域半径
     public float spawnInterval = 1f; // 生成间隔时间
-    public GameObject enemyPrefab;   // 敌人飞机的预制体
+    public GameObject[] enemyPrefabs;  // 敌人预制体数组
     private int EnemyNumber = 0;
     private float Probability;
 
@@ -39,11 +39,14 @@ public class EnemySpawnArea : MonoBehaviour
         // 输出生成的位置
         Debug.Log("下一个敌人生成在: " + randomPosition);
 
-
         GameManager.Instance.UpdateEnemyNumber(EnemyNumber);
 
+        // 从敌人预制体数组中随机选择一个
+        int index = Random.Range(0, enemyPrefabs.Length);
+        GameObject selectedPrefab = enemyPrefabs[index];
+
         // 获取敌人对象的 EnemyPlane 组件，并传递生成概率
-        EnemyPlane enemyPlane = enemyPrefab.GetComponent<EnemyPlane>();
+        EnemyPlane enemyPlane = selectedPrefab.GetComponent<EnemyPlane>();
         if (enemyPlane != null)
         {
             Probability = enemyPlane.Generation_Probability;
@@ -56,7 +59,7 @@ public class EnemySpawnArea : MonoBehaviour
         if (generationProbability <= Probability)
         {
             // 实例化敌人飞机
-            Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
+            Instantiate(selectedPrefab, randomPosition, Quaternion.identity);
             // 生成敌人数量增加
             EnemyNumber++;
         }

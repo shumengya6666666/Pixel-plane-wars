@@ -105,7 +105,7 @@ MonoBehaviour:
   bulletSpeed: 15
   bulletPrefab: {fileID: 5014304646218956809, guid: a3ad15ffcc221d14fb34467cbed2033c, type: 3}
   shootInterval: 0.2
-  health: 150
+  health: 300
   level: 0
   experience: 0
   money: 0

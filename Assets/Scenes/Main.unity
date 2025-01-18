@@ -427,8 +427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnAreaSize: 110
-  spawnInterval: 1
-  itemPrefab: {fileID: 0}
+  spawnInterval: 0.4
+  itemPrefab: {fileID: 2921306032921190488, guid: 632fe69a72f33824abe65518e7fd0e72, type: 3}
 --- !u!4 &1028563491
 Transform:
   m_ObjectHideFlags: 0
@@ -594,8 +594,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRadius: 55
-  spawnInterval: 1
-  enemyPrefab: {fileID: 2921306032921190488, guid: 3920b3c7458ac1d4a822b97f9e67a665, type: 3}
+  spawnInterval: 0.5
+  enemyPrefabs:
+  - {fileID: 2921306032921190488, guid: 23e6d586a6d6bbe48b6e34774e2f54d3, type: 3}
+  - {fileID: 2921306032921190488, guid: 3990cbc36973ecc45b812a4f2e00b8d3, type: 3}
+  - {fileID: 2921306032921190488, guid: e6c2ef477557e1240ac2e3f78547527e, type: 3}
+  - {fileID: 2921306032921190488, guid: 0f5d10c2c04a7e948ad0be354aeeb8cd, type: 3}
+  - {fileID: 2921306032921190488, guid: 35bc491ea93c3e74e9078dd9e8f939ce, type: 3}
 --- !u!1 &1431886709
 GameObject:
   m_ObjectHideFlags: 0

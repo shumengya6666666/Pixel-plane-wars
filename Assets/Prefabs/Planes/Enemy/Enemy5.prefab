@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5451129312144629271}
   - component: {fileID: -5637317815352058015}
   m_Layer: 7
-  m_Name: Enemy_Plane
+  m_Name: Enemy5
   m_TagString: EnemyPlane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 0235215d1b321f04381330efc6fc7a72, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 929b657368fee204885a6ffc303d6f64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -174,13 +174,14 @@ MonoBehaviour:
   isCanSuicide: 1
   SuicideTime: 20
   speed: 6
-  enemyHealth: 20
-  rotationSpeed: 100
+  enemyHealth: 18
+  rotationSpeed: 80
   bulletPrefab: {fileID: 5014304646218956809, guid: e23c1613177d27f47b5f1321b3b5aa36, type: 3}
   bulletSpeed: 6
-  fireRate: 1
+  fireRate: 3.5
   attackRange: 10
   Generated_Money: 10
   Generated_Experience: 5
-  Generation_Probability: 0.5
-  attackType: 3
+  Generation_Probability: 0.8
+  enemySprite: {fileID: 0}
+  attackType: 2
