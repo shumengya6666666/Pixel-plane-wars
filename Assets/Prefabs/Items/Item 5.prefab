@@ -172,5 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Generation_Probability: 0.8
-  Disappear_Time: 5
+  Disappear_Time: 10
   itemSprite: {fileID: 0}

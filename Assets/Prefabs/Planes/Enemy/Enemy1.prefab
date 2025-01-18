@@ -173,7 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCanSuicide: 1
   SuicideTime: 30
-  speed: 6
+  speed: 4
   enemyHealth: 50
   rotationSpeed: 40
   bulletPrefab: {fileID: 5014304646218956809, guid: e23c1613177d27f47b5f1321b3b5aa36, type: 3}
@@ -185,3 +185,4 @@ MonoBehaviour:
   Generation_Probability: 0.4
   enemySprite: {fileID: 0}
   attackType: 6
+  checkInterval: 0.5

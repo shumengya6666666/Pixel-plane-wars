@@ -162,4 +162,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet_Damage: 5
-  Disappear_Time: 5
+  Disappear_Time: 2

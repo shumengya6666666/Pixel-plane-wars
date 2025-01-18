@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f3c5cb5fd5d324a8e3c656866eebaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 6
-  rotationSpeed: 100
+  forwardSpeed: 7
+  rotationSpeed: 140
   firePoint: {fileID: 6314837561974649730}
   bulletSpeed: 15
   shootInterval: 0.2
@@ -114,6 +114,7 @@ MonoBehaviour:
   accelerationSpeed: 5
   maxSpeed: 20
   shootSound: {fileID: 8300000, guid: 76d175fc5bc018b4e9f1d37a81a2dbd5, type: 3}
+  attackType: 0
 --- !u!50 &4707592517326923873
 Rigidbody2D:
   serializedVersion: 4
@@ -173,7 +174,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008134246, y: -0.000000067055225}
+  m_Offset: {x: -0.005934015, y: 0.0008792132}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -184,7 +185,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.33626848, y: 0.31999987}
+  m_Size: {x: 0.23779032, y: 0.21976319}
   m_EdgeRadius: 0
 --- !u!82 &7154639991598110501
 AudioSource:
@@ -206,7 +207,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.45837045
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

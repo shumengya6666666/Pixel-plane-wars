@@ -1031,6 +1031,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1621715567095913901, guid: 10262d5a4805fb846a534511a4123f78, type: 3}
+      propertyPath: m_Size.x
+      value: 8.293823
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621715567095913901, guid: 10262d5a4805fb846a534511a4123f78, type: 3}
+      propertyPath: m_Offset.x
+      value: -124.59796
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073469530824817986, guid: 10262d5a4805fb846a534511a4123f78, type: 3}
+      propertyPath: m_Size.y
+      value: 7.5774994
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073469530824817986, guid: 10262d5a4805fb846a534511a4123f78, type: 3}
+      propertyPath: m_Offset.y
+      value: -14.66724
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946641596535064588, guid: 10262d5a4805fb846a534511a4123f78, type: 3}
+      propertyPath: m_Size.y
+      value: 9.194855
+      objectReference: {fileID: 0}
+    - target: {fileID: 3946641596535064588, guid: 10262d5a4805fb846a534511a4123f78, type: 3}
+      propertyPath: m_Offset.y
+      value: 111.35954
+      objectReference: {fileID: 0}
     - target: {fileID: 5051257904462160860, guid: 10262d5a4805fb846a534511a4123f78, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.07
@@ -1074,6 +1098,14 @@ PrefabInstance:
     - target: {fileID: 8669878543949425970, guid: 10262d5a4805fb846a534511a4123f78, type: 3}
       propertyPath: m_Name
       value: Map
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820415453316529966, guid: 10262d5a4805fb846a534511a4123f78, type: 3}
+      propertyPath: m_Size.x
+      value: 9.836277
+      objectReference: {fileID: 0}
+    - target: {fileID: 8820415453316529966, guid: 10262d5a4805fb846a534511a4123f78, type: 3}
+      propertyPath: m_Offset.x
+      value: 50.064102
       objectReference: {fileID: 0}
     - target: {fileID: 9007417720301262779, guid: 10262d5a4805fb846a534511a4123f78, type: 3}
       propertyPath: m_TileSpriteArray.Array.size

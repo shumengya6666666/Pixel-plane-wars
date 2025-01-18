@@ -172,6 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Generation_Probability: 0.8
-  Disappear_Time: 6
+  Disappear_Time: 8
   itemSprite: {fileID: 0}
   healthIncrease: 30
