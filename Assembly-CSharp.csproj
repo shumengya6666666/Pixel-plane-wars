@@ -67,13 +67,14 @@
     <Compile Include="Assets\Globel_Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\EnemyPlane.cs" />
     <Compile Include="Assets\Scripts\ExitGame.cs" />
-    <Compile Include="Assets\Scripts\Bullet.cs" />
     <Compile Include="Assets\Scripts\ItemSpawnArea.cs" />
     <Compile Include="Assets\Scripts\SceneSwitcher.cs" />
+    <Compile Include="Assets\Scripts\EnemyBullet.cs" />
     <Compile Include="Assets\Scripts\GUI.cs" />
     <Compile Include="Assets\Scripts\EnemySpawnArea.cs" />
     <Compile Include="Assets\Scripts\Player_Generated_Pos.cs" />
-    <Compile Include="Assets\Scripts\Enemy_Bullet.cs" />
+    <Compile Include="Assets\Scripts\Item.cs" />
+    <Compile Include="Assets\Scripts\PlayerBullet.cs" />
     <Compile Include="Assets\Scripts\Hello.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -99,12 +99,10 @@ public class PlayerPlane : MonoBehaviour
     {
 
         // ÆÕÍ¨Éä»÷£¨Ä¬ÈÏÉä1¿Å×Óµ¯£©
-        // ShootSingleBullet();
-        // É¢µ¯Éä»÷
+        ShootSingleBullet();
         //ShootShotgun(3);
         //ShootRadial(27);
-
-        ShootHorizontal(5);
+        //ShootHorizontal(5);
     }
 
 

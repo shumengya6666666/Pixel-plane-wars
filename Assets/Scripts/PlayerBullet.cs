@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Bullet : MonoBehaviour
+public class PlayerBullet : MonoBehaviour
 {
+    public int Bullet_Damage = 5;
+    public float Disappear_Time = 5;
+
     void Start()
     {
         // 在 5 秒后销毁子弹对象
-        Destroy(gameObject, 5f); // 5f 表示 5 秒后销毁该对象
+        Destroy(gameObject, Disappear_Time); // 5f 表示 5 秒后销毁该对象
     }
 
     void Update()
@@ -25,4 +28,7 @@ public class Enemy_Bullet : MonoBehaviour
             //Debug.Log("子弹撞到了空气墙");
         }
     }
+
+
+
 }

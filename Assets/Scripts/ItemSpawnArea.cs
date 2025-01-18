@@ -4,8 +4,9 @@ public class ItemSpawnArea : MonoBehaviour
 {
     public float spawnAreaSize = 10f; // 生成区域的边长
     public float spawnInterval = 1f;  // 生成间隔时间
-    public GameObject itemPrefab;     // 特殊物品的预制体
-    private int itemNumber = 0;       // 物品的数量
+    public GameObject itemPrefab;     // 特殊道具的预制体
+
+    private int itemNumber = 0;       // 道具的数量
     private float probability = 0.5f; // 假设物品生成概率为 50%
 
     void Start()
@@ -27,20 +28,20 @@ public class ItemSpawnArea : MonoBehaviour
     {
         // 随机生成 X 和 Z 坐标，确保在正方形区域内
         float x = Random.Range(-spawnAreaSize / 2f, spawnAreaSize / 2f);
-        float z = Random.Range(-spawnAreaSize / 2f, spawnAreaSize / 2f);
+        float y = Random.Range(-spawnAreaSize / 2f, spawnAreaSize / 2f);
 
         // 生成物品的随机位置
-        Vector3 randomPosition = new Vector3(x, 0f, z) + transform.position;
+        Vector3 randomPosition = new Vector3(x, y, 0f) + transform.position;
 
         // 输出生成的位置
-        Debug.Log("下一个物品生成在: " + randomPosition);
+        Debug.Log("下一个道具生成在: " + randomPosition);
 
         // 获取物品对象的 Item 组件，并传递生成概率
-        //Item item = itemPrefab.GetComponent<Item>();
-        //if (item != null)
-       // {
-       //     probability = item.Generation_Probability; // 使用物品的生成概率
-      //  }
+        Item item = itemPrefab.GetComponent<Item>();
+        if (item != null)
+        {
+            probability = item.Generation_Probability; // 获取物品的生成概率
+        }
 
         // 生成物品的概率
         float generationProbability = Random.Range(0f, 1f); // 生成一个 [0, 1) 之间的随机值

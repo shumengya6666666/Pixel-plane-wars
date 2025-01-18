@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f3c5cb5fd5d324a8e3c656866eebaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 8
-  rotationSpeed: 120
+  forwardSpeed: 6
+  rotationSpeed: 100
   firePoint: {fileID: 6314837561974649730}
-  bulletSpeed: 30
+  bulletSpeed: 15
   bulletPrefab: {fileID: 5014304646218956809, guid: a3ad15ffcc221d14fb34467cbed2033c, type: 3}
   shootInterval: 0.2
   health: 150
