@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7151347222766434231}
   - component: {fileID: 4707592517326923873}
   - component: {fileID: 5451129312144629271}
-  - component: {fileID: 439977348945755877}
+  - component: {fileID: -1698687501906100859}
   m_Layer: 10
-  m_Name: Item 4
+  m_Name: HealthRecovery
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 412091929, guid: 24b2ecb197d75c64f98adaeef2a350dd, type: 3}
+  m_Sprite: {fileID: 94874012, guid: 24b2ecb197d75c64f98adaeef2a350dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,7 +150,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.45, y: 0.46}
+    oldSize: {x: 0.48, y: 0.5}
     newSize: {x: 0.45, y: 0.46}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -159,7 +159,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.33626848, y: 0.31999987}
   m_EdgeRadius: 0
---- !u!114 &439977348945755877
+--- !u!114 &-1698687501906100859
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,9 +168,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2921306032921190488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74bf7f5f3e77ed64184e3833c06f670e, type: 3}
+  m_Script: {fileID: 11500000, guid: 649f7f5e169b6504db96ed3c56e2ed60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Generation_Probability: 0.8
-  Disappear_Time: 10
+  Generation_Probability: 0.5
+  Disappear_Time: 5
   itemSprite: {fileID: 0}

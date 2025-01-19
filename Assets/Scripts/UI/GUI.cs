@@ -16,8 +16,23 @@ public class GUI : MonoBehaviour
     private TextMeshProUGUI FPS;
     private float deltaTime = 0.0f;
     private float fps;
+
+    private Transform EnemyBullets;
+    private Transform Items;
+    private Transform Enemys;
+
+    int EnemyBullets_Num = 0;
+    int Items_Num = 0;
+    int Enemys_Num = 0;
+
     void Start()
     {
+        EnemyBullets = GameObject.Find("EnemyBullets").transform;
+        Items = GameObject.Find("Items").transform;
+        Enemys = GameObject.Find("Enemys").transform;
+
+
+
         // 使用 GetComponent 获取 TextMeshProUGUI 组件
         Player_Pos = GameObject.Find("Player_Pos")?.GetComponent<TextMeshProUGUI>();
         Enemy_Num = GameObject.Find("Enemy_Num")?.GetComponent<TextMeshProUGUI>();
@@ -36,6 +51,10 @@ public class GUI : MonoBehaviour
     void UpdateUI()
     {
 
+        EnemyBullets_Num = EnemyBullets.childCount;
+        Items_Num = Items.childCount;
+        Enemys_Num = Enemys.childCount;
+
         // 获取全局的玩家位置
         if (GameManager.Instance != null)
         {
@@ -49,7 +68,7 @@ public class GUI : MonoBehaviour
 
             if (Enemy_Num != null)
             {
-                Enemy_Num.text = "" + GameManager.Instance.EnemyNumvber;
+                Enemy_Num.text = "" + Enemys_Num;
             }
 
             if (Player_Health != null)
@@ -79,7 +98,7 @@ public class GUI : MonoBehaviour
 
             if (Item_Num != null)
             {
-                Item_Num.text = "" + GameManager.Instance.ItemNumber;
+                Item_Num.text = "" + Items_Num;
             }
 
             if (FPS != null)

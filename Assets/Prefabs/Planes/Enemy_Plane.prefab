@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCanSuicide: 1
-  SuicideTime: 20
+  SuicideTime: 60
   speed: 6
   enemyHealth: 20
   rotationSpeed: 100
@@ -183,4 +183,6 @@ MonoBehaviour:
   Generated_Money: 10
   Generated_Experience: 5
   Generation_Probability: 0.5
+  enemySprite: {fileID: 0}
   attackType: 3
+  checkInterval: 0.5

@@ -5,6 +5,7 @@ public class EnemySpawnArea : MonoBehaviour
     public float spawnRadius = 10f;  // 生成区域半径
     public float spawnInterval = 1f; // 生成间隔时间
     public GameObject[] enemyPrefabs;  // 敌人预制体数组
+    public Transform enemysParent; // 用于设置敌人父物体的引用
     private int EnemyNumber = 0;
     private float Probability;
 
@@ -58,8 +59,9 @@ public class EnemySpawnArea : MonoBehaviour
         // 假设敌人生成概率为 50%
         if (generationProbability <= Probability)
         {
-            // 实例化敌人飞机
-            Instantiate(selectedPrefab, randomPosition, Quaternion.identity);
+            // 实例化敌人飞机，并将它设置为 Enemys 的子对象
+            GameObject enemy = Instantiate(selectedPrefab, randomPosition, Quaternion.identity);
+            enemy.transform.SetParent(enemysParent);  // 设置父物体为 Enemys
             // 生成敌人数量增加
             EnemyNumber++;
         }

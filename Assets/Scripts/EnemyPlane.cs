@@ -16,6 +16,7 @@ public class EnemyPlane : MonoBehaviour
     public int Generated_Experience = 5; // 敌人掉落的经验值
     public float Generation_Probability = 0.5f; // 敌人的生成概率
     public Sprite enemySprite;  // 用来存储敌人的图片
+
     public enum AttackType //敌人攻击方式
     {
         SingleShot,    // 普通攻击
@@ -31,6 +32,7 @@ public class EnemyPlane : MonoBehaviour
 
 
     // 内部变量
+    private Transform EnemyBulletParent;
     private float timeSinceLastCheck = 0f; // 用于计时
     private Transform player; // 玩家对象的引用
     private float nextFireTime = 0f; // 下一次发射时间
@@ -39,6 +41,8 @@ public class EnemyPlane : MonoBehaviour
     {
         // 尝试查找玩家对象
         GameObject playerObj = GameObject.FindGameObjectWithTag("PlayerPlane");
+        EnemyBulletParent = GameObject.Find("EnemyBullets").transform;
+
         if (playerObj != null)
         {
             player = playerObj.transform;
@@ -146,6 +150,8 @@ public class EnemyPlane : MonoBehaviour
         Vector2 direction = transform.up; // 玩家前进的方向
 
         GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        bullet.transform.SetParent(EnemyBulletParent);
+
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         bulletRb.velocity = direction * bulletSpeed;
 
@@ -167,6 +173,8 @@ public class EnemyPlane : MonoBehaviour
             Vector2 direction = Quaternion.Euler(0, 0, currentAngle) * transform.up;
 
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            bullet.transform.SetParent(EnemyBulletParent);
+
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
             bulletRb.velocity = direction * bulletSpeed;
 
@@ -191,6 +199,8 @@ public class EnemyPlane : MonoBehaviour
             Vector2 direction = Quaternion.Euler(0, 0, currentAngle) * transform.up;
 
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            bullet.transform.SetParent(EnemyBulletParent);
+
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
             bulletRb.velocity = direction * bulletSpeed;
 
@@ -215,6 +225,8 @@ public class EnemyPlane : MonoBehaviour
         {
             // 创建子弹
             GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            bullet.transform.SetParent(EnemyBulletParent);  
+
             Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
 
             // 设置子弹的速度

@@ -22,12 +22,11 @@ public class Item : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        GameManager.Instance.ItemNumber -= 1;
         // 检查碰撞体是否有标签 "air_wall"
         if (collision.gameObject.CompareTag("AirWall"))
         {
-            // 如果是，销毁子弹
             Destroy(gameObject);
-            //Debug.Log("子弹撞到了空气墙");
         }
         else if (collision.gameObject.CompareTag("PlayerPlane"))
         {

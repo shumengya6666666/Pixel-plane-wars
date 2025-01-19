@@ -27,6 +27,13 @@ public class PlayerBullet : MonoBehaviour
             Destroy(gameObject);
             //Debug.Log("子弹撞到了空气墙");
         }
+        else if (collision.gameObject.CompareTag("EnemyBullet"))
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
+        }
+
+        
     }
 
 

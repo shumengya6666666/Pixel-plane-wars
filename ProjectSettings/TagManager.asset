@@ -11,6 +11,7 @@ TagManager:
   - EnemyBullet
   - Item
   - Decoration
+  - EnemyBullets
   layers:
   - Default
   - TransparentFX

@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCanSuicide: 1
-  SuicideTime: 20
+  SuicideTime: 60
   speed: 4
   enemyHealth: 18
   rotationSpeed: 80

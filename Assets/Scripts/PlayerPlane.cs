@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static PlayerPlane;
 
 public class PlayerPlane : MonoBehaviour
 {
@@ -32,13 +33,25 @@ public class PlayerPlane : MonoBehaviour
     }
     public AttackType attackType = AttackType.SingleShot; // 默认使用普通攻击
 
+    public enum BuffType
+    {
+        SpeedBoost,     // 速度提升
+        DamageBoost,    // 攻击力提升
+        HealthRegen,    // 生命恢复
+        GiganticBoost,   // 巨大化
+        MiniBoost
+    }
+
+
     // 私有变量
+    private List<Buff> activeBuffs = new List<Buff>(); // 当前生效的buff
     private AudioSource audioSource; // 用于播放音效的 AudioSource
     private Rigidbody2D rb;
     private Transform cameraTransform;
     private float lastShootTime = 0f; // 上次射击的时间
     private float currentSpeed; // 当前前进速度
     private float lastAccelerationTime = 0f; // 记录加速的时间
+    private bool isOnlyBuff = false;
 
     void Start()
     {
@@ -57,6 +70,22 @@ public class PlayerPlane : MonoBehaviour
 
     void Update()
     {
+
+        // 检查buff的剩余时间并移除过期的buff
+        for (int i = activeBuffs.Count - 1; i >= 0; i--)
+        {
+            Buff buff = activeBuffs[i];
+            buff.timer -= Time.deltaTime;
+
+            if (buff.timer <= 0)
+            {
+                RemoveBuff(buff);
+                activeBuffs.RemoveAt(i);
+            }
+        }
+
+        // Buff效果应用
+        ApplyBuffEffects();
 
 
         // 检查是否升级
@@ -262,13 +291,14 @@ public class PlayerPlane : MonoBehaviour
     {
 
 
-        Debug.Log("与碰撞体相撞： " + collision.gameObject.name);
+        //Debug.Log("与碰撞体相撞： " + collision.gameObject.name);
 
         // 检测是否与敌人飞机碰撞
         if (collision.gameObject.CompareTag("EnemyPlane"))
         {
             health -= 10;
             GameManager.Instance.UpdatePlayerHealth(health);
+            GameManager.Instance.EnemyNumvber-=1;
             Debug.Log("玩家受伤，剩余生命: " + health);
         }
         else if (collision.gameObject.CompareTag("AirWall"))
@@ -342,5 +372,93 @@ public class PlayerPlane : MonoBehaviour
             GameManager.Instance.UpdatePlayerHealth(health);
             GameManager.Instance.UpdatePlayerLevel(level);
         }
+    }
+
+
+
+    void ApplyBuffEffects()
+    {
+        foreach (Buff buff in activeBuffs)
+        {
+            switch (buff.type)
+            {
+                case BuffType.SpeedBoost:
+                    currentSpeed = forwardSpeed * 2; // 加速效果
+                    break;
+                case BuffType.DamageBoost:
+                    bulletSpeed = 15f; // 增加子弹速度作为攻击力提升的效果
+                    break;
+                case BuffType.HealthRegen:
+                    health += 1; // 每帧恢复一定生命
+                    GameManager.Instance.UpdatePlayerHealth(health);
+                    break;
+                case BuffType.GiganticBoost:
+                    if (!isOnlyBuff) // 只在未应用过时执行
+                    {
+                        transform.localScale = new Vector3(2f, 2f, 2f); // 将物体在X、Y、Z轴上的缩放因子都设置为2
+                        isOnlyBuff = true; // 标记已经应用过
+                    }
+                    break;
+                case BuffType.MiniBoost:
+                    if (!isOnlyBuff) // 只在未应用过时执行
+                    {
+                        transform.localScale = new Vector3(0.5f, 0.5f, 0.5f); // 将物体在X、Y、Z轴上的缩放因子都设置为0.5
+                        isOnlyBuff = true; // 标记已经应用过
+                    }
+                    break;
+            }
+        }
+    }
+
+
+
+    public void AddBuff(BuffType buffType, float duration)
+    {
+        Buff newBuff = new Buff(buffType, duration);
+        activeBuffs.Add(newBuff);
+    }
+
+    public void RemoveBuff(Buff buff)
+    {
+        // 当buff移除时，恢复默认状态
+        switch (buff.type)
+        {
+            case BuffType.SpeedBoost:
+                currentSpeed = forwardSpeed;  // 恢复原速度
+                break;
+            case BuffType.DamageBoost:
+                bulletSpeed = 10f;  // 恢复原子弹速度
+                break;
+            case BuffType.HealthRegen:
+                // 不需要恢复，因为是持续恢复
+                break;
+            case BuffType.GiganticBoost:
+                transform.localScale = new Vector3(1f, 1f, 1f); // 恢复默认大小
+                isOnlyBuff = false; // 重置标记
+                break;
+            case BuffType.MiniBoost:
+                transform.localScale = new Vector3(1f, 1f, 1f); // 恢复默认大小
+                isOnlyBuff = false; // 重置标记
+                break;
+        }
+    }
+
+
+}
+
+
+
+
+public class Buff
+{
+    public BuffType type;
+    public float duration;  // Buff的持续时间
+    public float timer;     // 当前剩余时间
+
+    public Buff(BuffType type, float duration)
+    {
+        this.type = type;
+        this.duration = duration;
+        this.timer = duration;
     }
 }

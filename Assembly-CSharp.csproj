@@ -62,8 +62,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\main.cs" />
     <Compile Include="Assets\Scripts\RadiationBomb.cs" />
+    <Compile Include="Assets\HealthRecovery.cs" />
     <Compile Include="Assets\Scripts\PlayerPlane.cs" />
     <Compile Include="Assets\Scripts\Items\Item.cs" />
+    <Compile Include="Assets\temp_map.cs" />
     <Compile Include="Assets\Globel_Scripts\GameStartManager.cs" />
     <Compile Include="Assets\Globel_Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\EnemyPlane.cs" />
@@ -71,11 +73,14 @@
     <Compile Include="Assets\Scripts\UI\StartGameButton.cs" />
     <Compile Include="Assets\Scripts\UI\ExitGame.cs" />
     <Compile Include="Assets\Scripts\Spawn\ItemSpawnArea.cs" />
+    <Compile Include="Assets\GiganticItem.cs" />
+    <Compile Include="Assets\MiniItem.cs" />
     <Compile Include="Assets\Scripts\Spawn\Player_Generated_Pos.cs" />
     <Compile Include="Assets\Scripts\EnemyBullet.cs" />
     <Compile Include="Assets\Scripts\Spawn\EnemySpawnArea.cs" />
     <Compile Include="Assets\Scripts\Items\SpeedItem.cs" />
     <Compile Include="Assets\Scripts\EndScreenManager.cs" />
+    <Compile Include="Assets\Globel_Scripts\SoundManager.cs" />
     <Compile Include="Assets\Scripts\PlayerBullet.cs" />
     <Compile Include="Assets\Scripts\Items\HealthItem.cs" />
     <Compile Include="Assets\Scripts\UI\GameOverUI.cs" />
